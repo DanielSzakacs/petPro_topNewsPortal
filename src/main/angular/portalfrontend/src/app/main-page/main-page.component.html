@@ -1,0 +1,102 @@
+<div class="over_top_header">
+    <a href="#" class="button_link" (click)="changeLanguage()">  Rus  </a>
+    <a href="#" class="button_link" (click)="changeLanguage()">  Eng  </a>
+</div>
+<!--Header-->
+<div class="top_header">
+  <a id="page_logo">{{languageText.Logo}}</a>
+  <div class="top_header_button_parrent">
+    <a class="button_link" href="#" (click)="getAllNews()">{{languageText.World}}</a>
+    <a class="button_link" href="#">{{languageText.Business}}</a>
+    <a class="button_link" href="#">{{languageText.Sport}}</a>
+    <a class="button_link" href="#">{{languageText.Crypto}}</a>
+    <select class="button_link" id="news_select" (change)="selectNews($event)">
+      <option value="" disabled selected hidden>{{languageText.All_news}}</option>
+      <option value="al-jazeera-english">Al-Jazeera</option>
+      <option value="cnn">CNN</option>
+      <option value="fox-news">Fox News</option>
+      <option value="abc-news">Abc News</option>
+      <option value="independent">Independent</option>
+      <option value="rt">RT</option>
+    </select>
+  </div>
+</div>
+
+<!--Top News-->
+<div class="top_news">
+  <div class="top_news_in_focus focus_card">
+    <p class="news_card_title">
+      {{languageText.In_focus}}
+    </p>
+    <div class="focus_top_photo">
+      <img src={{listOfTopNews[5].urlToImage}} alt="">
+    </div>
+    <div class="focus_top_news">
+      <ng-container class="focus_news_container" *ngFor="let data of listOfTopNews; let i=index">
+        <p style="width: 250px" *ngIf="i>=6">
+          <a class="news_link_button" href={{data.url}}>{{data.title}}</a> <br>
+          ---
+        </p>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="top_news_in_focus top_story_card">
+    <p class="news_card_title">
+      {{languageText.Top_news}}
+    </p>
+    <div class="focus_top_photo">
+      <img src={{listOfTopNews[1].urlToImage}} alt="">
+    </div>
+    <div class="focus_top_news">
+      <ng-container class="focus_news_container" *ngFor="let data of listOfTopNews; let i=index">
+        <p style="width: 250px" *ngIf="i<5 && i>=1">
+          <a class="news_link_button" href={{data.url}}>{{data.title}}</a> <br>
+          ---
+        </p>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="main_top_news_card">
+    <p style="width: 600px; margin-left: 1.5em" class="top_news_title">
+      <a href={{listOfTopNews[0].url}}>
+        {{listOfTopNews[0].title}}
+      </a>
+    </p>
+    <div class="main_top_photo">
+      <img src={{listOfTopNews[0].urlToImage}} alt="">
+    </div>
+    <div id="main_top_news_description">
+      <p>
+        {{listOfTopNews[0].description}}
+      </p>
+      <hr>
+      <br>
+    </div>
+
+    <!--Middle news card-->
+    <div id="middle_news_card">
+      <div class="around_the_world_card">
+        <p class="news_card_title">
+          {{languageText.Around_the_world}}
+        </p>
+        <div *ngFor="let news of listOfNews; let i=index;">
+            <div class="card" *ngIf="i<6">
+              <div class="photo">
+                <img src={{news.urlToImage}} alt="">
+              </div>
+              <div class="text">
+                <p>
+                  <a href={{news.url}} class="button_link">
+                    {{news.title}}
+                  </a> <br> <br>
+                  {{news.description}}
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

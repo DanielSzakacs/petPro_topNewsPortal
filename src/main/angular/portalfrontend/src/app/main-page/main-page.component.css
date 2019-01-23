@@ -1,0 +1,124 @@
+/*header area*/
+.over_top_header{
+  margin-top: -1px;
+  margin-bottom: 3px;
+}
+.over_top_header .button_link{
+  color: black;
+}
+.top_header{
+  background-color: black;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-top: 12px;
+  padding-bottom: 10px;
+  overflow: auto;
+}
+.top_header .button_link{
+  font-style: initial;
+  color: white;
+  margin-left: 2em;
+}
+.top_header_button_parrent{
+  float: right;
+  margin-right: 3em;
+}
+.button_link{
+  text-decoration: none;
+}
+#page_logo{
+  color: white;
+  margin-left: 3em;
+}
+/*Focus area*/
+.top_news_in_focus{
+  float: right;
+  background-color: aliceblue;
+  margin-top: 10px;
+}
+.focus_top_photo img{
+  width: 250px;
+  height: 150px;
+}
+.focus_top_news img{
+  width: 250px;
+}
+.focus_top_news a{
+  text-decoration: none;
+  color: black;
+  width: 750px;
+}
+ .news_card_title{
+  font-weight: bold;
+  font-size: large;
+  margin-left: 5px;
+}
+.focus_card{
+  margin-right: 8em;
+}
+.top_story_card{
+  margin-right: 1em;
+}
+/*Top news Card*/
+.main_top_news_card {
+  margin-top: 1em ;
+  margin-left: 2em;
+}
+.top_news_title a{
+  font-weight: bold;
+  font-size: 150%;
+  text-decoration: none;
+  color: black;
+}
+.main_top_photo img{
+  width: 580px;
+  margin-left: 25px;
+}
+#main_top_news_description p{
+  width: 600px;
+  font-size: larger;
+  margin-left: 25px;
+}
+#main_top_news_description hr {
+  width: 650px;
+  float: left;
+}
+/*Middle layer*/
+#middle_news_card {
+  margin-right: 2em;
+  margin-top: 5em;
+  background-color: aliceblue;
+}
+#middle_news_card .around_the_world_card {
+  margin-right: 7em;
+}
+#middle_news_card .around_the_world_card .news_card_title{
+  font-size: large;
+  font-weight: bold;
+}
+#middle_news_card .around_the_world_card .photo img{
+  width: 370px;
+}
+.around_the_world_card .card {
+  float: right;
+  margin-right: 14px;
+  margin-left: 20px;
+  margin-top: 1em;
+  background-color: aliceblue;
+}
+.around_the_world_card .card .text{
+  width: 21em;
+  margin-left: 5px;
+}
+.around_the_world_card .card .text p{
+  font-weight: normal;
+}
+.around_the_world_card .card .text a{
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+
