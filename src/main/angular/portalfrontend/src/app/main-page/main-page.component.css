@@ -86,11 +86,11 @@
 /*Middle layer*/
 #middle_news_card {
   margin-right: 2em;
-  margin-top: 5em;
+  margin-top: 6em;
   background-color: aliceblue;
 }
 #middle_news_card .around_the_world_card {
-  margin-right: 7em;
+  margin-right: 4em;
 }
 #middle_news_card .around_the_world_card .news_card_title{
   font-size: large;
@@ -101,6 +101,7 @@
 }
 .around_the_world_card .card {
   float: right;
+  width: 370px;
   margin-right: 14px;
   margin-left: 20px;
   margin-top: 1em;
