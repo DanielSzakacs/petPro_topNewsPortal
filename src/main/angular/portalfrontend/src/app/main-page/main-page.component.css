@@ -113,6 +113,7 @@
 }
 .around_the_world_card .card .text p{
   font-weight: normal;
+  margin: 0;
 }
 .around_the_world_card .card .text a{
   text-decoration: none;
