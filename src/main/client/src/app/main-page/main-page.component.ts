@@ -27,7 +27,7 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews).subscribe(
       res => {
         this.listOfNews = res;
-        // console.log(res);
+        //console.log(res);
         // console.log('HIeel')
       },
       error1 => {
