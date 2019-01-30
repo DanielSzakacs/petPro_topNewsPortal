@@ -50,10 +50,10 @@
     </div>
     <div class="focus_top_news">
       <ng-container class="focus_news_container" *ngFor="let data of listOfTopNews; let i=index">
-        <p style="width: 250px" *ngIf="i<5 && i>=1">
+        <div style="width: 250px;" *ngIf="i<5 && i>=1">
           <a class="news_link_button" href={{data.url}}>{{data.title}}</a> <br>
           ---
-        </p>
+        </div>
       </ng-container>
     </div>
   </div>
@@ -76,24 +76,17 @@
     </div>
 
     <!--Middle news card-->
-    <div id="middle_news_card">
-      <div class="around_the_world_card">
-        <p class="news_card_title">
-          {{languageText.Around_the_world}}
-        </p>
-        <div *ngFor="let news of listOfNews; let i=index;">
-          <div  class="card" *ngIf="i<6">
-            <div class="photo">
-              <img src={{news.urlToImage}} alt="">
-            </div>
-            <div class="text">
-              <p>
-                <a href={{news.url}} class="button_link">
-                  {{news.title}}
-                </a> <br> <br>
-                {{news.description}}
-              </p>
-            </div>
+    <div style="margin-top: 5em; margin-right: 3em;">
+      <hr>
+    </div>
+    <div class="card-deck">
+      <div *ngFor="let news of listOfNews; let i=index;">
+        <div class="card" style="width: 18rem; margin-top: 10em">
+          <img class="card-img-top" src="{{news.urlToImage}}" onerror=" src ='https://www.health.com/img/icons/missing-image-16x9.svg'" alt="no">
+          <div class="card-body">
+            <h5 class="card-title">{{news.title}}</h5>
+            <p class="card-text">{{news.description}}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>

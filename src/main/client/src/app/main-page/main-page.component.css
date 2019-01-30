@@ -87,41 +87,9 @@
   float: left;
 }
 /*Middle layer*/
-#middle_news_card {
-  margin-right: 2em;
-  margin-top: 6em;
-  background-color: aliceblue;
-}
-#middle_news_card .around_the_world_card {
-  margin-right: 4em;
-}
-#middle_news_card .around_the_world_card .news_card_title{
-  font-size: large;
-  font-weight: bold;
-}
-#middle_news_card .around_the_world_card .photo img{
-  width: 370px;
-}
-.around_the_world_card .card {
+.card {
   float: right;
-  width: 370px;
-  margin-right: 14px;
-  margin-left: 20px;
-  margin-top: 1em;
-  background-color: aliceblue;
-}
-.around_the_world_card .card .text{
-  width: 21em;
-  margin-left: 5px;
-}
-.around_the_world_card .card .text p{
-  font-weight: normal;
-  margin: 0;
-}
-.around_the_world_card .card .text a{
-  text-decoration: none;
-  font-weight: bold;
-  color: black;
+  margin-left: 1em;
 }
 
 
