@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment} from "../../environments/environment.prod";
+import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 
 @Component({
@@ -10,9 +10,9 @@ import {HttpClient} from "@angular/common/http";
 export class MainPageComponent implements OnInit {
 
   mainPageNews = environment.mainNewsURL;
-  listOfNews : Object;
-  listOfTopNews : Object;
-  sportLine: Object;
+  listOfNews : object;
+  listOfTopNews : object;
+  sportLine: object;
   languageText = environment.engText;
 
   constructor(private http: HttpClient) { }
@@ -27,10 +27,10 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews).subscribe(
       res => {
         this.listOfNews = res;
-        console.log(res)
+        console.log('dsa')
       },
       error1 => {
-        console.log(error1)
+        Console.log(error1)
       }
     );
   }
@@ -38,14 +38,14 @@ export class MainPageComponent implements OnInit {
   selectNews(source) {
     let news = source.target.value;
     this.getAllTopNewsBySource(news);
-    console.log(news);
+    Console.log(news);
     this.http.get(this.mainPageNews + '/' + news).subscribe(
       res => {
         this.listOfNews = res;
-        console.log(res)
+        Console.log(res)
       },
       error1 => {
-        console.log(error1)
+        Console.log(error1)
       }
     );
   }
