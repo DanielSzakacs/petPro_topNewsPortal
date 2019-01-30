@@ -1,6 +1,6 @@
 <div class="over_top_header">
-    <a href="#" class="button_link" (click)="changeLanguage()">  Rus  </a>
-    <a href="#" class="button_link" (click)="changeLanguage()">  Eng  </a>
+  <a href="#" class="button_link" (click)="changeLanguage()">  Rus  </a>
+  <a href="#" class="button_link" (click)="changeLanguage()">  Eng  </a>
 </div>
 <!--Header-->
 <div class="top_header">
@@ -82,19 +82,19 @@
           {{languageText.Around_the_world}}
         </p>
         <div *ngFor="let news of listOfNews; let i=index;">
-            <div  class="card" *ngIf="i<6">
-              <div class="photo">
-                <img src={{news.urlToImage}} alt="">
-              </div>
-              <div class="text">
-                <p>
-                  <a href={{news.url}} class="button_link">
-                    {{news.title}}
-                  </a> <br> <br>
-                  {{news.description}}
-                </p>
-              </div>
+          <div  class="card" *ngIf="i<6">
+            <div class="photo">
+              <img src={{news.urlToImage}} alt="">
             </div>
+            <div class="text">
+              <p>
+                <a href={{news.url}} class="button_link">
+                  {{news.title}}
+                </a> <br> <br>
+                {{news.description}}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
