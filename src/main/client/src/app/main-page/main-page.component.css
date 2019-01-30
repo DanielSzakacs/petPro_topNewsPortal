@@ -19,6 +19,9 @@
   color: white;
   margin-left: 2em;
 }
+.top_header #news_select{
+  color: black;
+}
 .top_header_button_parrent{
   float: right;
   margin-right: 3em;
