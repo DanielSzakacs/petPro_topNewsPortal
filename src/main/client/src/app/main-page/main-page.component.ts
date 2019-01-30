@@ -12,7 +12,7 @@ export class MainPageComponent implements OnInit {
   mainPageNews = environment.mainNewsURL;
   listOfNews : object;
   listOfTopNews : object;
-  sportLine: object;
+  sportLine: object; //Not used
   languageText = environment.engText;
 
   constructor(private http: HttpClient) { }
@@ -27,8 +27,6 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews).subscribe(
       res => {
         this.listOfNews = res;
-        // console.log(res);
-        // console.log('HIeel')
       },
       error1 => {
         // console.log(error1)
@@ -43,7 +41,6 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews + '/' + news).subscribe(
       res => {
         this.listOfNews = res;
-        // console.log(res)
       },
       error1 => {
         // Console.log(error1)
@@ -55,8 +52,6 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews + '/' + source + '?type=top').subscribe(
       res => {
         this.listOfTopNews = res;
-        // console.log("Get all the Top news was Good.")
-        // console.log(this.listOfTopNews)
       },
       error1 => {
         // console.log(error1)
