@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  mainNewsURL: 'http://localhost:8080/topnews',
+  mainNewsURL: '/topnews',
   rusText: {'World':'Новости', 'Business':'Бизнес',
     'Sport':'Спорт', 'Crypto':'Крипто',
     'In_focus':'Фокус', 'Top_news':'Новости',
