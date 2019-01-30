@@ -27,10 +27,11 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews).subscribe(
       res => {
         this.listOfNews = res;
-        console.log('dsa')
+        // console.log(res);
+        // console.log('HIeel')
       },
       error1 => {
-        Console.log(error1)
+        // console.log(error1)
       }
     );
   }
@@ -38,14 +39,14 @@ export class MainPageComponent implements OnInit {
   selectNews(source) {
     let news = source.target.value;
     this.getAllTopNewsBySource(news);
-    Console.log(news);
+    // console.log(news);
     this.http.get(this.mainPageNews + '/' + news).subscribe(
       res => {
         this.listOfNews = res;
-        Console.log(res)
+        // console.log(res)
       },
       error1 => {
-        Console.log(error1)
+        // Console.log(error1)
       }
     );
   }
@@ -54,11 +55,11 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews + '/' + source + '?type=top').subscribe(
       res => {
         this.listOfTopNews = res;
-        console.log("Get all the Top news was Good.")
-        console.log(this.listOfTopNews)
+        // console.log("Get all the Top news was Good.")
+        // console.log(this.listOfTopNews)
       },
       error1 => {
-        console.log(error1)
+        // console.log(error1)
       }
     )
   }
@@ -69,7 +70,7 @@ export class MainPageComponent implements OnInit {
         this.sportLine = res;
       },
       error1 => {
-        console.log(error1)
+        // console.log(error1)
       }
     )
   }
