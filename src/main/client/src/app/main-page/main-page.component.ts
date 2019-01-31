@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
   sportLine: object; //Not used
   languageText = environment.engText;
  // TODO
-  flagButton = "http://icons.iconarchive.com/icons/wikipedia/flags/24/US-United-States-Flag-icon.png";
+  flagButton = "http://icons.iconarchive.com/icons/wikipedia/flags/24/RU-Russia-Flag-icon.png";
   flagUSA = "http://icons.iconarchive.com/icons/wikipedia/flags/24/US-United-States-Flag-icon.png";
   flagRUS = "http://icons.iconarchive.com/icons/wikipedia/flags/24/RU-Russia-Flag-icon.png";
 
@@ -77,10 +77,10 @@ export class MainPageComponent implements OnInit {
   changeLanguage() {
     if(this.languageText == environment.engText){
       this.languageText = environment.rusText;
-      this.flagButton = this.flagRUS;
+      this.flagButton = this.flagUSA;
     }else{
       this.languageText = environment.engText;
-      this.flagButton = this.flagUSA;
+      this.flagButton = this.flagRUS;
     }
   }
 
