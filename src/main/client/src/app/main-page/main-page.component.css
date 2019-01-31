@@ -1,7 +1,8 @@
 /*header area*/
 .over_top_header{
   margin-top: -1px;
-  margin-bottom: 3px;
+  margin-bottom: 1px;
+  margin-left: 1em;
 }
 .over_top_header .button_link{
   color: black;
@@ -10,7 +11,7 @@
   background-color: black;
   margin-left: -1em;
   margin-right: -1em;
-  padding-top: 12px;
+  padding-top: 5px;
   padding-bottom: 10px;
   overflow: auto;
 }
@@ -86,12 +87,5 @@
   width: 650px;
   float: left;
 }
-/*Middle layer*/
-/*.card {*/
-  /*float: right;*/
-  /*margin-left: 1em;*/
-/*}*/
-
-
 
 

@@ -1,6 +1,7 @@
 <div class="over_top_header">
-  <a href="#" class="button_link" (click)="changeLanguage()">  Rus  </a>
-  <a href="#" class="button_link" (click)="changeLanguage()">  Eng  </a>
+  <a class="navbar-brand" href="#" (click)="changeLanguage()">
+    <img src="{{flagButton}}" alt="flag">
+  </a>
 </div>
 <!--Header-->
 <div class="top_header">
@@ -57,7 +58,7 @@
       </ng-container>
     </div>
   </div>
-
+<!--Big picture-->
   <div class="main_top_news_card">
     <p style="width: 600px; margin-left: 1.5em" class="top_news_title">
       <a href={{listOfTopNews[0].url}}>
@@ -79,7 +80,7 @@
     <div style="margin-top: 5em; margin-right: 3em;">
       <hr>
     </div>
-    <div class="card-deck" style="margin-top: 5em; margin-left: 2em">
+    <div class="card-deck" style="margin-top: 2em; margin-left: 2em">
       <div *ngFor="let news of listOfNews;">
         <div class="card" style="width: 18rem; margin-top: 4em; margin-left: 1em; float: right">
           <img class="card-img-top" src="{{news.urlToImage}}" onerror=" src ='https://www.health.com/img/icons/missing-image-16x9.svg'" alt="no">
