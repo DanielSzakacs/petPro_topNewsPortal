@@ -7,14 +7,14 @@
 <div class="top_header">
   <a id="page_logo">{{languageText.Logo}}</a>
   <div class="top_header_button_parrent">
-    <a class="button_link" href="world" (click)="getAllNews()">{{languageText.World}}</a>
+    <a class="button_link" href="#" >{{languageText.World}}</a>
     <a class="button_link" href="#">{{languageText.Business}}</a>
     <a class="button_link" href="#">{{languageText.Sport}}</a>
     <a class="button_link" href="#">{{languageText.Crypto}}</a>
     <select  class="button_link" id="news_select" (change)="selectNews($event)">
       <option value="" disabled selected hidden>{{languageText.All_news}}</option>
-      <option value="al-jazeera-english">Al-Jazeera</option>
       <option value="cnn">CNN</option>
+      <option value="al-jazeera-english">Al-Jazeera</option>
       <option value="fox-news">Fox News</option>
       <option value="abc-news">Abc News</option>
       <option value="independent">Independent</option>
