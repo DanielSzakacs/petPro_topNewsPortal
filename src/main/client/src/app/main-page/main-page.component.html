@@ -1,19 +1,20 @@
 <div class="over_top_header">
-  <a href="#" class="button_link" (click)="changeLanguage()">  Rus  </a>
-  <a href="#" class="button_link" (click)="changeLanguage()">  Eng  </a>
+  <a class="navbar-brand" href="#" (click)="changeLanguage()">
+    <img src="{{flagButton}}" alt="flag">
+  </a>
 </div>
 <!--Header-->
 <div class="top_header">
   <a id="page_logo">{{languageText.Logo}}</a>
   <div class="top_header_button_parrent">
-    <a class="button_link" href="world" (click)="getAllNews()">{{languageText.World}}</a>
+    <a class="button_link" href="#" >{{languageText.World}}</a>
     <a class="button_link" href="#">{{languageText.Business}}</a>
     <a class="button_link" href="#">{{languageText.Sport}}</a>
     <a class="button_link" href="#">{{languageText.Crypto}}</a>
     <select  class="button_link" id="news_select" (change)="selectNews($event)">
       <option value="" disabled selected hidden>{{languageText.All_news}}</option>
-      <option value="al-jazeera-english">Al-Jazeera</option>
       <option value="cnn">CNN</option>
+      <option value="al-jazeera-english">Al-Jazeera</option>
       <option value="fox-news">Fox News</option>
       <option value="abc-news">Abc News</option>
       <option value="independent">Independent</option>
@@ -23,6 +24,29 @@
 </div>
 
 <!--Top News-->
+<div class="card-deck" style="float: right">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <h6>{{languageText.Top_news}}</h6>
+    </div>
+    <img class="card-img-top" src="{{listOfTopNews[1].urlToImage}}" onerror=" src ='https://www.health.com/img/icons/missing-image-16x9.svg'" alt="">
+    <div class="card-body">
+      <a href="{{listOfTopNews[1].url}}">
+        <h6 class="card-title">{{listOfTopNews[1].title}}</h6>
+      </a>
+    </div>
+    <div *ngFor="let news of listOfTopNews; let i = index">
+      <div class="card-group" *ngIf="1<i && i<8"  style="margin-left: 3px">
+        <small>
+          <a href="{{news.url}}">{{news.title}}</a> <br>
+          <hr style="margin-bottom: 4px; margin-top: 4px">
+        </small>
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <div class="top_news">
   <div class="top_news_in_focus focus_card">
     <p class="news_card_title">
@@ -41,23 +65,24 @@
     </div>
   </div>
 
-  <div class="top_news_in_focus top_story_card">
-    <p class="news_card_title">
-      {{languageText.Top_news}}
-    </p>
-    <div class="focus_top_photo">
-      <img src={{listOfTopNews[1].urlToImage}} alt="">
-    </div>
-    <div class="focus_top_news">
-      <ng-container class="focus_news_container" *ngFor="let data of listOfTopNews; let i=index">
-        <div style="width: 250px;" *ngIf="i<5 && i>=1">
-          <a class="news_link_button" href={{data.url}}>{{data.title}}</a> <br>
-          ---
-        </div>
-      </ng-container>
-    </div>
-  </div>
+  <!--<div class="top_news_in_focus top_story_card">-->
+    <!--<p class="news_card_title">-->
+      <!--{{languageText.Top_news}}-->
+    <!--</p>-->
+    <!--<div class="focus_top_photo">-->
+      <!--<img src={{listOfTopNews[1].urlToImage}} alt="">-->
+    <!--</div>-->
+    <!--<div class="focus_top_news">-->
+      <!--<ng-container class="focus_news_container" *ngFor="let data of listOfTopNews; let i=index">-->
+        <!--<div style="width: 250px;" *ngIf="i<5 && i>=1">-->
+          <!--<a class="news_link_button" href={{data.url}}>{{data.title}}</a> <br>-->
+          <!-- -&#45;&#45;-->
+        <!--</div>-->
+      <!--</ng-container>-->
+    <!--</div>-->
+  <!--</div>-->
 
+<!--Big picture-->
   <div class="main_top_news_card">
     <p style="width: 600px; margin-left: 1.5em" class="top_news_title">
       <a href={{listOfTopNews[0].url}}>
@@ -79,14 +104,15 @@
     <div style="margin-top: 5em; margin-right: 3em;">
       <hr>
     </div>
-    <div class="card-deck">
-      <div *ngFor="let news of listOfNews; let i=index;">
-        <div class="card" style="width: 18rem; margin-top: 10em">
+    <div class="card-deck" style="margin-top: 2em; margin-left: 2em">
+      <div *ngFor="let news of listOfNews;">
+        <div class="card" style="width: 18rem; margin-top: 4em; margin-left: 1em; float: right">
           <img class="card-img-top" src="{{news.urlToImage}}" onerror=" src ='https://www.health.com/img/icons/missing-image-16x9.svg'" alt="no">
           <div class="card-body">
-            <h5 class="card-title">{{news.title}}</h5>
+            <a href="{{news.url}}">
+              <h6 class="card-title">{{news.title}}</h6>
+            </a>
             <p class="card-text">{{news.description}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>
