@@ -79,14 +79,15 @@
     <div style="margin-top: 5em; margin-right: 3em;">
       <hr>
     </div>
-    <div class="card-deck">
-      <div *ngFor="let news of listOfNews; let i=index;">
-        <div class="card" style="width: 18rem; margin-top: 10em">
+    <div class="card-deck" style="margin-top: 5em; margin-left: 2em">
+      <div *ngFor="let news of listOfNews;">
+        <div class="card" style="width: 18rem; margin-top: 4em; margin-left: 1em; float: right">
           <img class="card-img-top" src="{{news.urlToImage}}" onerror=" src ='https://www.health.com/img/icons/missing-image-16x9.svg'" alt="no">
           <div class="card-body">
-            <h5 class="card-title">{{news.title}}</h5>
+            <a href="{{news.url}}">
+              <h6 class="card-title">{{news.title}}</h6>
+            </a>
             <p class="card-text">{{news.description}}</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
       </div>
