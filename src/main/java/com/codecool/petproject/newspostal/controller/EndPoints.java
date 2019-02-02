@@ -11,9 +11,10 @@ public class EndPoints {
     //al-jazeera-english  cnn  fox-news  abc-news  google-news-ru  independent  rt
     @GetMapping("/topnews/{source}")
     public String getNewsBySource(@PathVariable String source, @RequestParam(name = "type", required = false) String type)  {
-        type = type == null ? "" : type;
         if(source.equals("rt")){ //This part is necessary because other ways we get all the rt news which is on spanish.
             type = "top";
+        }else{
+            type = type == null ? "" : type;
         }
         try {
             return String.valueOf(newsFactory.getNews(source, type));
@@ -26,7 +27,7 @@ public class EndPoints {
     @GetMapping("/topnews")
     public String getAllNews() {
         try {
-            return String.valueOf(newsFactory.getNews("cnn", "")); // TODO delete the string. Only for test
+            return String.valueOf(newsFactory.getNews("cnn", ""));
         } catch (Exception e) {
             e.printStackTrace();
             return "The is no data";

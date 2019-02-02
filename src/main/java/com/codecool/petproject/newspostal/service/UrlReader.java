@@ -1,6 +1,7 @@
 package com.codecool.petproject.newspostal.service;
 
 import org.json.JSONObject;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,19 +10,12 @@ import java.net.URL;
 
 public class UrlReader {
 
-    protected static JSONObject getJsonObjectFromUrl(String url) throws Exception {
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-        con.setRequestMethod("GET");
+    protected static String getNewsFromApi(String url)
+    {
+        final String uri = url;
 
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-        return new JSONObject(response.toString());
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.getForObject(uri, String.class);
+        return result;
     }
 }
