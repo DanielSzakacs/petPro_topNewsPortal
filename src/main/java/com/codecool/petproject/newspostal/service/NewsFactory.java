@@ -18,6 +18,6 @@ public class NewsFactory {
         String type;
         type = newsType.equals("top") ? "top-headlines" : "everything";
         String url = "https://newsapi.org/v2/"+ type +"?sources=" + channelName + "&apiKey=707805dad8ed44f1b6c24adb59e2739c";
-        return UrlReader.getNewsFromApi(url);
+        return new UrlReader().getNewsFromApi(url);
     }
 }

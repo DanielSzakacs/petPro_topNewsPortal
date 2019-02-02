@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-public class EndPoints {
+public class RestControllerService {
 
     private NewsFactory newsFactory = new NewsFactory();
-    //al-jazeera-english  cnn  fox-news  abc-news  google-news-ru  independent  rt
+
     @GetMapping("/topnews/{source}")
     public String getNewsBySource(@PathVariable String source, @RequestParam(name = "type", required = false) String type)  {
         if(source.equals("rt")){ //This part is necessary because other ways we get all the rt news which is on spanish.
@@ -32,9 +32,5 @@ public class EndPoints {
             e.printStackTrace();
             return "The is no data";
         }
-    }
-
-    private void testingMethod() {
-        System.out.println("ok");
     }
 }
