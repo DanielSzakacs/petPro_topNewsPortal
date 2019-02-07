@@ -5,8 +5,13 @@ import org.json.JSONObject;
 
 public class NewsFactory {
 
-    public Object getNews(String channelName, String newsType) throws JSONException {
-        return jsonBuilder(channelName, newsType);
+    public Object getNews(String channelName, String newsType) {
+        try {
+            return jsonBuilder(channelName, newsType);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return e;
+        }
     }
 
     private Object jsonBuilder(String channelName, String newsType) throws JSONException {

@@ -1,7 +1,6 @@
 package com.codecool.petproject.newspostal;
 
 import com.codecool.petproject.newspostal.service.NewsFactory;
-import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +16,7 @@ public class NewsFactoryTest {
     NewsFactory newsFactory;
 
     @Test
-    public void NewsFactory_getNewsMethod_wontReturn_runWithOutException() throws JSONException {
+    public void NewsFactory_getNewsMethod_wontReturn_runWithOutException() {
         Assert.assertNotNull(this.newsFactory.getNews("cnn", "top"));
     }
-
-
 }

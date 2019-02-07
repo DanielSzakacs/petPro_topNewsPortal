@@ -16,21 +16,11 @@ public class RestControllerService {
         }else{
             type = type == null ? "" : type;
         }
-        try {
-            return String.valueOf(newsFactory.getNews(source, type));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "There is no data";
-        }
+        return String.valueOf(newsFactory.getNews(source, type));
     }
 
     @GetMapping("/topnews")
     public String getAllNews() {
-        try {
-            return String.valueOf(newsFactory.getNews("cnn", ""));
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "There is no data";
-        }
+        return String.valueOf(newsFactory.getNews("cnn", ""));
     }
 }
