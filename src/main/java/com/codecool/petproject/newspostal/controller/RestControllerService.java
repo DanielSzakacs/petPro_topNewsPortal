@@ -20,7 +20,7 @@ public class RestControllerService {
             return String.valueOf(newsFactory.getNews(source, type));
         } catch (Exception e) {
             e.printStackTrace();
-            return "The is no data";
+            return "There is no data";
         }
     }
 
@@ -30,7 +30,7 @@ public class RestControllerService {
             return String.valueOf(newsFactory.getNews("cnn", ""));
         } catch (Exception e) {
             e.printStackTrace();
-            return "The is no data";
+            return "There is no data";
         }
     }
 }
