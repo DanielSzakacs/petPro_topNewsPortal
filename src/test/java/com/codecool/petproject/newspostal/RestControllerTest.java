@@ -1,8 +1,6 @@
 package com.codecool.petproject.newspostal;
 
 import com.codecool.petproject.newspostal.controller.RestControllerService;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest()
+@SpringBootTest
 public class RestControllerTest {
 
     @Autowired
