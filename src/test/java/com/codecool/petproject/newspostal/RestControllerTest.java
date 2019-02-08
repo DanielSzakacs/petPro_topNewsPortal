@@ -25,4 +25,6 @@ public class RestControllerTest {
     public void restControllerService_endpoint_getNewsBySourceMethod_runWithOutExeption(){
         Assert.assertNotNull(this.restControllerService.getNewsBySource("cnn","top"));
     }
+
+
 }
