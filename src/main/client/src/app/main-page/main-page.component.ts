@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
+import {TextServiceService} from "../textService/text-service.service";
 
 @Component({
   selector: 'app-main-page',
