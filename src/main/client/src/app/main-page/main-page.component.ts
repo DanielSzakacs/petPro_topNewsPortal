@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
+import {FlagService} from "../flagService/flag.service";
 
 @Component({
   selector: 'app-main-page',
@@ -14,12 +15,8 @@ export class MainPageComponent implements OnInit {
   listOfTopNews : object;
   sportLine: object; //Not used
   languageText = environment.engText;
- // TODO
-  flagButton = "http://icons.iconarchive.com/icons/wikipedia/flags/24/RU-Russia-Flag-icon.png";
-  flagUSA = "http://icons.iconarchive.com/icons/wikipedia/flags/24/US-United-States-Flag-icon.png";
-  flagRUS = "http://icons.iconarchive.com/icons/wikipedia/flags/24/RU-Russia-Flag-icon.png";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , public flagService: FlagService) { }
 
   ngOnInit() {
     this.getAllNews();
@@ -33,7 +30,7 @@ export class MainPageComponent implements OnInit {
         this.listOfNews = res;
       },
       error1 => {
-        // console.log(error1)
+        console.log(error1)
       }
     );
   }
@@ -41,13 +38,13 @@ export class MainPageComponent implements OnInit {
   selectNews(source) {
     let news = source.target.value;
     this.getAllTopNewsBySource(news);
-    // console.log(news);
+    console.log(news);
     this.http.get(this.mainPageNews + '/' + news).subscribe(
       res => {
         this.listOfNews = res;
       },
       error1 => {
-        // Console.log(error1)
+        console.log(error1)
       }
     );
   }
@@ -58,7 +55,7 @@ export class MainPageComponent implements OnInit {
         this.listOfTopNews = res;
       },
       error1 => {
-        // console.log(error1)
+        console.log(error1)
       }
     )
   }
@@ -69,7 +66,7 @@ export class MainPageComponent implements OnInit {
         this.sportLine = res;
       },
       error1 => {
-        // console.log(error1)
+        console.log(error1)
       }
     )
   }
@@ -77,10 +74,10 @@ export class MainPageComponent implements OnInit {
   changeLanguage() {
     if(this.languageText == environment.engText){
       this.languageText = environment.rusText;
-      this.flagButton = this.flagUSA;
+      this.flagService.setflagButton(this.flagService.getflagUSA());
     }else{
       this.languageText = environment.engText;
-      this.flagButton = this.flagRUS;
+      this.flagService.setflagButton(this.flagService.getflagRUS());
     }
   }
 
