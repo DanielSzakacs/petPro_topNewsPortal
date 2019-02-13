@@ -14,7 +14,7 @@ public class NewsFactory {
         }
     }
 
-    private String jsonBuilder(String channelName, String newsType) throws JSONException {
+    public String jsonBuilder(String channelName, String newsType) throws JSONException {
         JSONObject jsonNews = new JSONObject(getNewsByType(channelName, newsType));
         return  String.valueOf(jsonNews.get("articles")); // With this easier to manage, and no unnecessary data.
     }
