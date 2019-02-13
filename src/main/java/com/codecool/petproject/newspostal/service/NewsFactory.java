@@ -5,18 +5,18 @@ import org.json.JSONObject;
 
 public class NewsFactory {
 
-    public Object getNews(String channelName, String newsType) {
+    public String getNews(String channelName, String newsType) {
         try {
             return jsonBuilder(channelName, newsType);
         } catch (JSONException e) {
             e.printStackTrace();
-            return e;
+            return "";
         }
     }
 
-    private Object jsonBuilder(String channelName, String newsType) throws JSONException {
+    public String jsonBuilder(String channelName, String newsType) throws JSONException {
         JSONObject jsonNews = new JSONObject(getNewsByType(channelName, newsType));
-        return jsonNews.get("articles"); // With this easier to manage, and no unnecessary data.
+        return  String.valueOf(jsonNews.get("articles")); // With this easier to manage, and no unnecessary data.
     }
 
     private String getNewsByType(String channelName, String newsType) {
