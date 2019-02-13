@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
 import {TextServiceService} from "../textService/text-service.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-main-page',
@@ -15,13 +16,17 @@ export class MainPageComponent implements OnInit {
   listOfNews : object;
   listOfTopNews : object;
   sportLine: object; //Not used
-  languageText = environment.engText;
+  languageText = TextServiceService.prototype.currentLanguage;
 
-  constructor(private http: HttpClient , public flagService: FlagService) { }
+  constructor(private http: HttpClient ,
+              public flagService: FlagService,
+              private userCookie: CookieService) { }
 
   ngOnInit() {
     this.getAllNews();
     this.getSportLine();
+    this.manageLanguage();
+    this.userCookie.set('language', 'eng');
   }
 
   getAllNews(){
@@ -73,12 +78,23 @@ export class MainPageComponent implements OnInit {
   }
 
   changeLanguage() {
+    this.manageLanguageCookie();
     if(this.languageText == environment.engText){
-      this.languageText = environment.rusText;
       this.flagService.setflagButton(this.flagService.getflagUSA());
     }else{
-      this.languageText = environment.engText;
       this.flagService.setflagButton(this.flagService.getflagRUS());
+    }
+  }
+
+  private manageLanguage(){
+    TextServiceService.prototype.changeLanguage(this.userCookie.get("language"));
+  }
+
+  private manageLanguageCookie(){
+    if(this.userCookie.get('language') == 'eng'){
+      this.userCookie.set('language', 'rus');
+    }else if(this.userCookie.get('language') == 'rus'){
+      this.userCookie.set('language', 'eng');
     }
   }
 

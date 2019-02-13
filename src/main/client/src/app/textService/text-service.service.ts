@@ -5,7 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class TextServiceService {
 
-  constructor() { }
+  constructor() {
+    this.changeLanguage("eng")
+  }
+
+  public currentLanguage;
 
   private _rusText: {'World':'Мир', 'Business':'Бизнес',
     'Sport':'Спорт', 'Crypto':'Крипто',
@@ -19,11 +23,12 @@ export class TextServiceService {
     'All_news': 'All news'};
 
 
-  get rusText() {
-    return this._rusText;
-  }
-
-  get engText() {
-    return this._engText;
+  public changeLanguage(language: String){
+      if(language == "eng"){
+        this.currentLanguage = this._engText;
+      }
+      else if(language == "rus"){
+        this.currentLanguage = this._rusText;
+      }
   }
 }
