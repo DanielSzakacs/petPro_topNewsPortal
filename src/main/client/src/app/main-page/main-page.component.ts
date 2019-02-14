@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-main-page',
@@ -14,13 +15,16 @@ export class MainPageComponent implements OnInit {
   listOfNews : object;
   listOfTopNews : object;
   sportLine: object; //Not used
-  languageText = environment.engText;
+  languageText;
 
-  constructor(private http: HttpClient , public flagService: FlagService) { }
+  constructor(private http: HttpClient ,
+              public flagService: FlagService,
+              private cookieService: CookieService) { }
 
   ngOnInit() {
     this.getAllNews();
     this.getSportLine();
+    this.manageLanguage();
   }
 
   getAllNews(){
@@ -71,14 +75,23 @@ export class MainPageComponent implements OnInit {
     )
   }
 
-  changeLanguage() {
-    if(this.languageText == environment.engText){
+  manageLanguage(){
+    if(this.cookieService.get('language') == 'rus'){
       this.languageText = environment.rusText;
       this.flagService.setflagButton(this.flagService.getflagUSA());
-    }else{
+    }else if (this.cookieService.get('language') == 'eng'){
       this.languageText = environment.engText;
       this.flagService.setflagButton(this.flagService.getflagRUS());
     }
+  }
+
+  public changeLanguageCookie(){
+    if(this.cookieService.get('language') == 'eng'){
+      this.cookieService.set('language', 'rus');
+    }else {
+      this.cookieService.set('language', 'eng')
+    }
+    this.manageLanguage();
   }
 
 }
