@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
-import {TextServiceService} from "../textService/text-service.service";
 import {CookieService} from "ngx-cookie-service";
 
 @Component({
@@ -16,17 +15,16 @@ export class MainPageComponent implements OnInit {
   listOfNews : object;
   listOfTopNews : object;
   sportLine: object; //Not used
-  languageText = TextServiceService.prototype.currentLanguage;
+  languageText;
 
   constructor(private http: HttpClient ,
               public flagService: FlagService,
-              private userCookie: CookieService) { }
+              private cookieService: CookieService) { }
 
   ngOnInit() {
     this.getAllNews();
     this.getSportLine();
     this.manageLanguage();
-    this.userCookie.set('language', 'eng');
   }
 
   getAllNews(){
@@ -77,25 +75,23 @@ export class MainPageComponent implements OnInit {
     )
   }
 
-  changeLanguage() {
-    this.manageLanguageCookie();
-    if(this.languageText == environment.engText){
+  manageLanguage(){
+    if(this.cookieService.get('language') == 'rus'){
+      this.languageText = environment.rusText;
       this.flagService.setflagButton(this.flagService.getflagUSA());
-    }else{
+    }else if (this.cookieService.get('language') == 'eng'){
+      this.languageText = environment.engText;
       this.flagService.setflagButton(this.flagService.getflagRUS());
     }
   }
 
-  private manageLanguage(){
-    TextServiceService.prototype.changeLanguage(this.userCookie.get("language"));
-  }
-
-  private manageLanguageCookie(){
-    if(this.userCookie.get('language') == 'eng'){
-      this.userCookie.set('language', 'rus');
-    }else if(this.userCookie.get('language') == 'rus'){
-      this.userCookie.set('language', 'eng');
+  public changeLanguageCookie(){
+    if(this.cookieService.get('language') == 'eng'){
+      this.cookieService.set('language', 'rus');
+    }else {
+      this.cookieService.set('language', 'eng')
     }
+    this.manageLanguage();
   }
 
 }
