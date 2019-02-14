@@ -15,16 +15,16 @@ export class MainPageComponent implements OnInit {
   listOfNews : object;
   listOfTopNews : object;
   sportLine: object; //Not used
-  languageText;
+  languageText = environment.engText;
 
   constructor(private http: HttpClient ,
               public flagService: FlagService,
               private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.manageLanguage();
     this.getAllNews();
     this.getSportLine();
-    this.manageLanguage();
   }
 
   getAllNews(){
