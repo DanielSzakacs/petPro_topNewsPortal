@@ -71,22 +71,17 @@
 </div>
 
 <!--Big picture-->
-  <div class="main_top_news_card">
-    <p style="width: 600px; margin-left: 1.5em" class="top_news_title">
-      <a href={{listOfTopNews[0].url}}>
-        {{listOfTopNews[0].title}}
-      </a>
-    </p>
-    <div class="main_top_photo">
-      <img src={{listOfTopNews[0].urlToImage}} alt="">
+<div class="card-deck" style=" margin-left: 2em; margin-top: -6em">
+    <div class="card" style="width: 18rem; margin-top: 4em; margin-left: 1em; float: right">
+      <img  class="card-img-top" src="{{listOfTopNews[0].urlToImage}}" onerror=" src ='https://www.health.com/img/icons/missing-image-16x9.svg'" alt="no">
+      <div class="card-body">
+        <a href="{{listOfTopNews[0].url}}">
+          <h6 class="card-title">{{listOfTopNews[0].title}}</h6>
+        </a>
+        <p class="card-text">{{listOfTopNews[0].description}}</p>
+      </div>
     </div>
-    <div id="main_top_news_description">
-      <p>
-        {{listOfTopNews[0].description}}
-      </p>
-      <hr>
-      <br>
-    </div>
+</div>
 
     <!--Middle news card-->
     <div style="margin-top: 5em; margin-right: 3em;">
@@ -105,5 +100,5 @@
         </div>
       </div>
     </div>
-  </div>
+  <!--</div>-->
 
