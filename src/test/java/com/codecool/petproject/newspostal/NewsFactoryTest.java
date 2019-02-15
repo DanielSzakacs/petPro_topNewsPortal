@@ -27,7 +27,7 @@ public class NewsFactoryTest {
     public void setNewsFactory_getNewsByType_willReturn10NewsIfTypeIsTop() throws JSONException { // TODO Balazs nézze meg
         newsFactory = new NewsFactory();
         JSONObject jsonNews = new JSONObject(newsFactory.getNewsByType("cnn", "top"));
-        int result = Integer.valueOf((Integer) jsonNews.get("totalResults"));
+        int result = (Integer) jsonNews.get("totalResults");
         assertEquals(10, result);
     }
 
@@ -35,7 +35,7 @@ public class NewsFactoryTest {
     public void setNewsFactory_getNewsByType_willReturn20NewsIfTypeIsEverything() throws JSONException { // TODO Balazs nézze meg
         newsFactory = new NewsFactory();
         JSONObject jsonNews = new JSONObject(newsFactory.getNewsByType("cnn", ""));
-        int result = Integer.valueOf((Integer) jsonNews.get("totalResults"));
+        int result = (Integer) jsonNews.get("totalResults");
         System.out.println(jsonNews);
         assertTrue(result > 10);
     }
