@@ -3,6 +3,7 @@ import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
 import {CookieHandlerService} from "../cookiehandlerService/cookie-handler.service";
+import {UserService} from "../userService/user.service";
 
 @Component({
   selector: 'app-main-page',
@@ -94,4 +95,15 @@ export class MainPageComponent implements OnInit {
     this.manageLanguage();
   }
 
+  public isUserLoggedIn() {
+    return UserService.userIsLoggedIn;
+  }
+
+  public openLink(link : string) {
+    if(this.isUserLoggedIn()){
+      open (link);
+    }else{
+       alert('Need to register')
+    }
+  }
 }
