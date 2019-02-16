@@ -29,5 +29,4 @@ public class RestControllerTest {
     public void restControllerService_endpoint_getNewsBySourceMethod_willReturnException(){
         Assert.assertNotNull(this.restControllerService.getNewsBySource("cnn","nothing"));
     }
-
 }
