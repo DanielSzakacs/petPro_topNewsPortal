@@ -1,6 +1,6 @@
 package com.codecool.petproject.newspostal.controller;
 
-import com.codecool.petproject.newspostal.service.NewsFactory;
+import com.codecool.petproject.newspostal.service.newsHandler.NewsFactory;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
