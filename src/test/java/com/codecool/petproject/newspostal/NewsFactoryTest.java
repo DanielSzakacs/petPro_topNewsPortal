@@ -32,7 +32,7 @@ public class NewsFactoryTest {
     }
 
     @Test
-    public void setNewsFactory_getNewsByType_willReturn20NewsIfTypeIsEverything() throws JSONException { // TODO Balazs nézze meg
+    public void setNewsFactory_getNewsByType_willReturn20NewsIfTypeIsAEmptyString() throws JSONException { // TODO Balazs nézze meg
         newsFactory = new NewsFactory();
         JSONObject jsonNews = new JSONObject(newsFactory.getNewsByType("cnn", ""));
         int result = (Integer) jsonNews.get("totalResults");
