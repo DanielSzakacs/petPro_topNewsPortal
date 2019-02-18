@@ -99,7 +99,6 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-
   public isUserLoggedIn() {
     return UserService.userIsLoggedIn;
   }
