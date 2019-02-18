@@ -4,6 +4,7 @@ import com.codecool.petproject.newspostal.Repository.UserRepository;
 import com.codecool.petproject.newspostal.service.login.LoginHandler;
 import com.codecool.petproject.newspostal.service.newsHandler.NewsFactory;
 import com.codecool.petproject.newspostal.service.registration.RegistrationHandler;
+import com.codecool.petproject.newspostal.service.security.BCryptPasswordHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,11 @@ public class RestControllerService {
     @Autowired
     public UserRepository userRepository;
 
+    public BCryptPasswordHandler bCryptPasswordHandler = new BCryptPasswordHandler();
+
     private NewsFactory newsFactory = new NewsFactory();
     private RegistrationHandler registrationHandler = new RegistrationHandler();
-    private LoginHandler loginHandler = new LoginHandler();
+    private LoginHandler loginHandler = new LoginHandler(bCryptPasswordHandler);
 
 
     @GetMapping("/topnews/{source}")
@@ -49,7 +52,7 @@ public class RestControllerService {
 
     @PostMapping("/login/{useremail}")
     public ResponseEntity userLogin(@PathVariable String useremail, @RequestParam(name = "userpassword", required = true) String userpassword){
-        if(loginHandler.isUserEmailAndPasswordCorrect(useremail, userpassword)){
+        if(loginHandler.isUserEmailAndPasswordCorrect(useremail, userpassword, userRepository)){
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }else{
             return new ResponseEntity(HttpStatus.BAD_REQUEST);

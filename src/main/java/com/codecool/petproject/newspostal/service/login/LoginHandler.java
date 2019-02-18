@@ -1,40 +1,38 @@
 package com.codecool.petproject.newspostal.service.login;
 
 import com.codecool.petproject.newspostal.Repository.UserRepository;
+import com.codecool.petproject.newspostal.module.User;
 import com.codecool.petproject.newspostal.service.security.BCryptPasswordHandler;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.security.InvalidAlgorithmParameterException;
 
 public class LoginHandler {
 
-    @Autowired
-    private UserRepository userRepository;
+    public BCryptPasswordHandler bCryptPasswordHandler;
 
-    @Autowired
-    private BCryptPasswordHandler bCryptPasswordHandler;
+    public LoginHandler(BCryptPasswordHandler bCryptPasswordHandler) {
+        this.bCryptPasswordHandler = bCryptPasswordHandler;
+    }
 
     // TODO ez a fő method
-    public boolean isUserEmailAndPasswordCorrect(String email, String password) {
-        if(!isEmailRegistered(email)){
-            if(isPasswordCorrect(email, password)){
-                return true;
-            }else{
-                new Exception("Your password is not correct");
-            }
+    public boolean isUserEmailAndPasswordCorrect(String email, String password, UserRepository userRepository) {
+        if(isEmailRegistered(email, userRepository)){
+            return isPasswordCorrect(email, password, userRepository);
         }else{
             new InvalidAlgorithmParameterException("Your email is not correct");
         }
         return false;
     }
 
-    private boolean isEmailRegistered(String email){
-        return userRepository.getByEmail(email).email.equals(email);
+    private boolean isEmailRegistered(String email, UserRepository userRepository){
+        return userRepository.existsByEmail(email);
     }
 
-    private boolean isPasswordCorrect(String email, String password){
-        String userHashedPassword = userRepository.getByEmail(email).password;
-        return bCryptPasswordHandler.matchPasswords(password, userHashedPassword);
+    private boolean isPasswordCorrect(String email, String password, UserRepository userRepository){
+        User user = userRepository.findByEmail(email);
+        String userHashedPassword = user.password;
+        boolean result =  bCryptPasswordHandler.matchPasswords(password, userHashedPassword);
+        return result;
     }
 
 }

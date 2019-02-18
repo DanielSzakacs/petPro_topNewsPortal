@@ -16,8 +16,12 @@ public class User {
     @Column(name="password")
     public String password;
 
+    public User() {
+    }
+
     public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
+
 }
