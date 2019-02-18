@@ -13,22 +13,22 @@ public class RegistrationHandler {
     @Autowired
     private BCryptPasswordHandler bCryptPasswordHandler;
 
-    public void saveNewUser(String email, String password) throws IllegalArgumentException{
+    public boolean saveNewUser(String email, String password) throws IllegalArgumentException{
         if(isEmailInUse(email)){
             String hashedCode = bCryptPasswordHandler.hashCode(password);
             addUserToDB(email, hashedCode);
+            return true;
         }else{
             new IllegalArgumentException();
         }
+        return false;
     }
 
-    public boolean isEmailInUse(String email){
+    private boolean isEmailInUse(String email){
         return userRepository.getByEmail(email).email.equals(email);
     }
 
-    public void addUserToDB(String email, String password){
+    private void addUserToDB(String email, String password){
         userRepository.save(new User(email, password));
     }
-    //Code hashelése
-    //egy ok visszakuldése.
 }

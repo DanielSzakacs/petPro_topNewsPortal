@@ -1,13 +1,19 @@
 package com.codecool.petproject.newspostal.controller;
 
 import com.codecool.petproject.newspostal.service.newsHandler.NewsFactory;
+import com.codecool.petproject.newspostal.service.registration.RegistrationHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
 
 @CrossOrigin
 @RestController
 public class RestControllerService {
 
     private NewsFactory newsFactory = new NewsFactory();
+    private RegistrationHandler registrationHandler = new RegistrationHandler();
 
     @GetMapping("/topnews/{source}")
     public String getNewsBySource(@PathVariable String source, @RequestParam(name = "type", required = false) String type)  {
@@ -22,5 +28,15 @@ public class RestControllerService {
     @GetMapping("/topnews")
     public String getAllNews() {
         return String.valueOf(newsFactory.getNews("cnn", ""));
+    }
+
+
+    @PostMapping("/registration/{useremail}{userpassword}")
+    public ResponseEntity userRegistration(@PathVariable String useremail, @PathVariable String userpassword){
+        if(registrationHandler.saveNewUser(useremail, userpassword)){
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }else{
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 }
