@@ -27,10 +27,18 @@
   float: right;
   margin-right: 3em;
 }
-.button_link{
+.button_link {
   text-decoration: none;
 }
 #page_logo{
   color: white;
   margin-left: 3em;
 }
+
+/*Login and Registration button*/
+.over_top_header .btn {
+  float: right;
+  margin-top: 5px;
+  margin-right: 0.5em;
+}
+

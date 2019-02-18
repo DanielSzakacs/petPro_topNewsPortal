@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {environment} from "../../environments/environment.prod";
 import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
-import {CookieService} from "ngx-cookie-service";
+import {CookieHandlerService} from "../cookiehandlerService/cookie-handler.service";
+import {UserService} from "../userService/user.service";
 
 @Component({
   selector: 'app-main-page',
@@ -19,7 +20,7 @@ export class MainPageComponent implements OnInit {
 
   constructor(private http: HttpClient ,
               public flagService: FlagService,
-              private cookieService: CookieService) { }
+              private cookieService: CookieHandlerService) { }
 
   ngOnInit() {
     this.manageLanguage();
@@ -76,22 +77,37 @@ export class MainPageComponent implements OnInit {
   }
 
   manageLanguage(){
-    if(this.cookieService.get('language') == 'rus'){
+    if(this.cookieService.getCookieValue('language') == 'rus'){
       this.languageText = environment.rusText;
       this.flagService.setflagButton(this.flagService.getflagUSA());
-    }else if (this.cookieService.get('language') == 'eng'){
+    }else if (this.cookieService.getCookieValue('language') == 'eng'){
       this.languageText = environment.engText;
       this.flagService.setflagButton(this.flagService.getflagRUS());
     }
   }
 
-  public changeLanguageCookie(){
-    if(this.cookieService.get('language') == 'eng'){
-      this.cookieService.set('language', 'rus');
-    }else {
-      this.cookieService.set('language', 'eng')
+  public turnLanguageToRus(){
+    if(this.cookieService.getCookieValue('language') != 'rus'){
+      this.cookieService.saveCookie('language', 'rus');
+      this.manageLanguage();
     }
-    this.manageLanguage();
+  }
+  public turnLanguageToEng(){
+    if(this.cookieService.getCookieValue('language') != 'eng'){
+      this.cookieService.saveCookie('language', 'eng');
+      this.manageLanguage();
+    }
   }
 
+  public isUserLoggedIn() {
+    return UserService.userIsLoggedIn;
+  }
+
+  public openLink(link : string) {
+    if(this.isUserLoggedIn()){
+      open (link);
+    }else{
+       alert('Need to register')
+    }
+  }
 }

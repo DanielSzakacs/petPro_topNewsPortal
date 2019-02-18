@@ -1,4 +1,4 @@
-package com.codecool.petproject.newspostal.service;
+package com.codecool.petproject.newspostal.service.newsHandler;
 
 import org.json.JSONObject;
 

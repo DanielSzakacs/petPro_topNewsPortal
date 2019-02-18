@@ -1,4 +1,4 @@
-package com.codecool.petproject.newspostal.service;
+package com.codecool.petproject.newspostal.service.newsHandler;
 import org.springframework.web.client.RestTemplate;
 
 public class UrlReader {
