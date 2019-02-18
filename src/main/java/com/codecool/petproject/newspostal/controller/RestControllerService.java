@@ -1,5 +1,6 @@
 package com.codecool.petproject.newspostal.controller;
 
+import com.codecool.petproject.newspostal.service.login.LoginHandler;
 import com.codecool.petproject.newspostal.service.newsHandler.NewsFactory;
 import com.codecool.petproject.newspostal.service.registration.RegistrationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class RestControllerService {
 
     private NewsFactory newsFactory = new NewsFactory();
     private RegistrationHandler registrationHandler = new RegistrationHandler();
+    private LoginHandler loginHandler = new LoginHandler();
 
     @GetMapping("/topnews/{source}")
     public String getNewsBySource(@PathVariable String source, @RequestParam(name = "type", required = false) String type)  {
@@ -34,6 +36,15 @@ public class RestControllerService {
     @PostMapping("/registration/{useremail}{userpassword}")
     public ResponseEntity userRegistration(@PathVariable String useremail, @PathVariable String userpassword){
         if(registrationHandler.saveNewUser(useremail, userpassword)){
+            return new ResponseEntity(HttpStatus.ACCEPTED);
+        }else{
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @PostMapping("/login/{useremail}{userpassword}")
+    public ResponseEntity userLogin(@PathVariable String useremail, @PathVariable String userpassword){
+        if(loginHandler.isUserEmailAndPasswordCorrect(useremail, userpassword)){
             return new ResponseEntity(HttpStatus.ACCEPTED);
         }else{
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
