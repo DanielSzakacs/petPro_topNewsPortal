@@ -86,14 +86,19 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  public changeLanguageCookie(){
-    if(this.cookieService.getCookieValue('language') == 'eng'){
+  public turnLanguageToRus(){
+    if(this.cookieService.getCookieValue('language') != 'rus'){
       this.cookieService.saveCookie('language', 'rus');
-    }else {
-      this.cookieService.saveCookie('language', 'eng')
+      this.manageLanguage();
     }
-    this.manageLanguage();
   }
+  public turnLanguageToEng(){
+    if(this.cookieService.getCookieValue('language') != 'eng'){
+      this.cookieService.saveCookie('language', 'eng');
+      this.manageLanguage();
+    }
+  }
+
 
   public isUserLoggedIn() {
     return UserService.userIsLoggedIn;
