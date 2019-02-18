@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
 import {CookieHandlerService} from "../cookiehandlerService/cookie-handler.service";
 import {UserService} from "../userService/user.service";
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-main-page',

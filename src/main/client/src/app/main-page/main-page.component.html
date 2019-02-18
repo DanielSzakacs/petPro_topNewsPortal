@@ -89,7 +89,7 @@
       </div>
     </div>
 </div>
-
+<br><br>
   <ng-template [ngIf]= "isUserLoggedIn()" >
     <div class="card-deck" style=" margin-left: 2em">
       <div *ngFor="let news of listOfNews;">
@@ -124,3 +124,9 @@
   </div>
 </ng-template>
 <!--<a   (click)="openLoginRegisterWindow('/google.hu')" href="{{openLink()}}">Link</a>-->
+
+<div [@dialog] *ngIf="visible" class="dialog">
+  <ng-content></ng-content>
+  <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>
