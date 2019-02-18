@@ -9,7 +9,7 @@ public class BCryptPasswordHandler {
         return new BCryptPasswordEncoder();
     }
 
-    public String hashCode(String password){
+    public String hashingCode(String password){
         return this.passwordEncoder().encode(password);
     }
 

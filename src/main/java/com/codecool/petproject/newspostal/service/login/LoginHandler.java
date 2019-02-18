@@ -16,7 +16,7 @@ public class LoginHandler {
 
     // TODO ez a fő method
     public boolean isUserEmailAndPasswordCorrect(String email, String password) {
-        if(isEmailRegistered(email)){
+        if(!isEmailRegistered(email)){
             if(isPasswordCorrect(email, password)){
                 return true;
             }else{
@@ -37,6 +37,4 @@ public class LoginHandler {
         return bCryptPasswordHandler.matchPasswords(password, userHashedPassword);
     }
 
-    //kell ami visszahesheli a kódot
-    //kell a user kodot összeegyeztetti a kodal amit beirt. ha ok akkor uzenetet kuld vissza.
 }

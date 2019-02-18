@@ -1,19 +1,19 @@
 package com.codecool.petproject.newspostal.module;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public long id;
 
+    @Column(name="email")
     public String email;
 
+    @Column(name="password")
     public String password;
 
     public User(String email, String password) {
