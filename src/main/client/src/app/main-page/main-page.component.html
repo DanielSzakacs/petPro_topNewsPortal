@@ -6,8 +6,8 @@
     <img src="{{flagService.getflagRUS()}}" alt="flag">
   </a>
 
-  <button class="btn btn-info btn-sm">Log in</button>
-  <button class="btn btn-danger btn-sm">Registration</button>
+  <a href="#popup1" class="btn btn-sm btn-info">Login</a>
+  <a href="#popup2" class="btn btn-sm btn-danger">Registration</a>
 </div>
 <!--Header-->
 <div class="top_header">
@@ -123,4 +123,38 @@
     </div>
   </div>
 </ng-template>
-<!--<a   (click)="openLoginRegisterWindow('/google.hu')" href="{{openLink()}}">Link</a>-->
+<!--Login-->
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Login</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+      Please log in.
+      <form #loginform = "ngForm" (submit)="makeLogin(loginform.value)">
+        <input type="text" name="email" placeholder="email" ngModel required>
+        <br>
+        <input type="password" name="password" placeholder="password" ngModel required>
+        <br>
+        <button class="btn btn-danger" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Registration-->
+<div id="popup2" class="overlay">
+  <div class="popup">
+    <h2>Registration</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+      Please use your email for your registration. <br>
+      Also make sure your password is OK ....
+      <form #registrationform = "ngForm" (submit)="makeRegistration(registrationform.value)">
+        <input class="text-input-dialog" type="text" name="email" placeholder="email" ngModel required>
+        <br>
+        <input type="password" name="password" placeholder="password" ngModel required>
+        <br>
+        <button class="btn btn-danger" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

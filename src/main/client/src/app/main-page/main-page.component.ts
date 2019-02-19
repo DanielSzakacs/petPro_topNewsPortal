@@ -15,7 +15,6 @@ export class MainPageComponent implements OnInit {
   mainPageNews = environment.mainNewsURL;
   listOfNews : object;
   listOfTopNews : object;
-  sportLine: object; //Not used
   languageText = environment.engText;
 
   constructor(private http: HttpClient ,
@@ -25,7 +24,6 @@ export class MainPageComponent implements OnInit {
   ngOnInit() {
     this.manageLanguage();
     this.getAllNews();
-    this.getSportLine();
   }
 
   getAllNews(){
@@ -58,17 +56,6 @@ export class MainPageComponent implements OnInit {
     this.http.get(this.mainPageNews + '/' + source + '?type=top').subscribe(
       res => {
         this.listOfTopNews = res;
-      },
-      error1 => {
-        console.log(error1)
-      }
-    )
-  }
-
-  getSportLine() {
-    this.http.get(this.mainPageNews + '/bbc-sport' ).subscribe(
-      res => {
-        this.sportLine = res;
       },
       error1 => {
         console.log(error1)
@@ -109,5 +96,9 @@ export class MainPageComponent implements OnInit {
     }else{
        alert('Need to register')
     }
+  }
+
+  public makeLogin(data){
+
   }
 }
