@@ -6,8 +6,13 @@
     <img src="{{flagService.getflagRUS()}}" alt="flag">
   </a>
 
-  <a href="#popup1" class="btn btn-sm btn-info">Login</a>
-  <a href="#popup2" class="btn btn-sm btn-danger">Registration</a>
+<ng-template [ngIf]= "!isUserLoggedIn()">
+  <a href="#login" class="btn btn-sm btn-info">Login</a>
+  <a href="#registration" class="btn btn-sm btn-danger">Registration</a>
+</ng-template>
+<ng-template [ngIf]= "isUserLoggedIn()">
+  <button (click)="logout()" class="btn btn-sm btn-danger">Logout</button>
+</ng-template>
 </div>
 <!--Header-->
 <div class="top_header">
@@ -124,7 +129,7 @@
   </div>
 </ng-template>
 <!--Login-->
-<div id="popup1" class="overlay">
+<div id="login" class="overlay">
   <div class="popup">
     <h2>Login</h2>
     <a class="close" href="#">&times;</a>
@@ -135,13 +140,13 @@
         <br>
         <input type="password" name="password" placeholder="password" ngModel required>
         <br>
-        <button class="btn btn-danger" type="submit">Submit</button>
+        <button class="btn btn-danger submit" type="submit">Submit</button>
       </form>
     </div>
   </div>
 </div>
 <!--Registration-->
-<div id="popup2" class="overlay">
+<div id="registration" class="overlay">
   <div class="popup">
     <h2>Registration</h2>
     <a class="close" href="#">&times;</a>
@@ -153,7 +158,7 @@
         <br>
         <input type="password" name="password" placeholder="password" ngModel required>
         <br>
-        <button class="btn btn-danger" type="submit">Submit</button>
+        <button class="btn btn-danger submit" type="submit">Submit</button>
       </form>
     </div>
   </div>
