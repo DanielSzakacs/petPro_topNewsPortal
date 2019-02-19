@@ -15,4 +15,12 @@ export class CookieHandlerService {
   public saveCookie(key: string, value : string ){
     this.cookieService.set(key, value);
   }
+
+  public delete(key : string){
+    this.cookieService.delete(key);
+  }
+
+  public isUserCookieExists(){
+    return this.cookieService.check('user');
+  }
 }

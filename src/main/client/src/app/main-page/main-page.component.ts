@@ -15,17 +15,19 @@ export class MainPageComponent implements OnInit {
   mainPageNews = environment.mainNewsURL;
   listOfNews : object;
   listOfTopNews : object;
-  sportLine: object; //Not used
   languageText = environment.engText;
+  user = false;
 
-  constructor(private http: HttpClient ,
+
+  constructor(private http: HttpClient,
               public flagService: FlagService,
-              private cookieService: CookieHandlerService) { }
+              private cookieService: CookieHandlerService,
+              private userService : UserService) { }
 
   ngOnInit() {
+    this.isUserLoggedIn();
     this.manageLanguage();
     this.getAllNews();
-    this.getSportLine();
   }
 
   getAllNews(){
@@ -65,17 +67,6 @@ export class MainPageComponent implements OnInit {
     )
   }
 
-  getSportLine() {
-    this.http.get(this.mainPageNews + '/bbc-sport' ).subscribe(
-      res => {
-        this.sportLine = res;
-      },
-      error1 => {
-        console.log(error1)
-      }
-    )
-  }
-
   manageLanguage(){
     if(this.cookieService.getCookieValue('language') == 'rus'){
       this.languageText = environment.rusText;
@@ -100,7 +91,8 @@ export class MainPageComponent implements OnInit {
   }
 
   public isUserLoggedIn() {
-    return UserService.userIsLoggedIn;
+    return this.userService.userIsLoggedIn()
+    //return UserService.user;
   }
 
   public openLink(link : string) {
@@ -110,4 +102,41 @@ export class MainPageComponent implements OnInit {
        alert('Need to register')
     }
   }
+
+  // login
+  public makeLogin(data){
+    this.http.get( 'http://localhost:8080//login/' + data.email + '?userpassword=' + data.password).subscribe(
+      res => {
+        this.login(data.email);
+        this.isUserLoggedIn();
+        console.log('You logged in successfully')
+      },
+      error1 => {
+        console.log(error1)
+      }
+    );
+  }
+  // registration
+  public makeRegistration(data){
+    this.http.get('http://localhost:8080//registration/' + data.email + '?userpassword=' + data.password).subscribe(
+      res => {
+        this.login(data.email);
+        console.log(res);
+        this.isUserLoggedIn();
+      },
+      error1 => {
+        console.log(error1)
+      }
+    );
+  }
+
+  public login(data){
+    this.userService.login(data.email);
+  }
+
+  public logout(){
+    console.log('u try to log out');
+    this.userService.logout();
+  }
+
 }

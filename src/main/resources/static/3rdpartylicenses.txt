@@ -269,13 +269,13 @@ MIT
 @angular/common
 MIT
 
-ngx-cookie-service
-MIT
-
 @angular/platform-browser
 MIT
 
-@angular/animations
+@angular/forms
+MIT
+
+ngx-cookie-service
 MIT
 
 zone.js

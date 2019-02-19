@@ -41,7 +41,7 @@ public class RestControllerService {
     }
 
 
-    @PostMapping("/registration/{useremail}")
+    @GetMapping("/registration/{useremail}")
     public ResponseEntity userRegistration(@PathVariable String useremail, @RequestParam(name = "userpassword", required = true) String userpassword){
         if(registrationHandler.saveNewUser(useremail, userpassword, userRepository)){
             return new ResponseEntity(HttpStatus.ACCEPTED);
@@ -50,7 +50,7 @@ public class RestControllerService {
         }
     }
 
-    @PostMapping("/login/{useremail}")
+    @GetMapping("/login/{useremail}")
     public ResponseEntity userLogin(@PathVariable String useremail, @RequestParam(name = "userpassword", required = true) String userpassword){
         if(loginHandler.isUserEmailAndPasswordCorrect(useremail, userpassword, userRepository)){
             return new ResponseEntity(HttpStatus.ACCEPTED);
