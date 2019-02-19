@@ -5,6 +5,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { CookieService } from 'ngx-cookie-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
