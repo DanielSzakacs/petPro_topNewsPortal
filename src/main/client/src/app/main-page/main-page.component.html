@@ -7,11 +7,11 @@
   </a>
 
 <ng-template [ngIf]= "!isUserLoggedIn()">
-  <a href="#login" class="btn btn-sm btn-info">Login</a>
-  <a href="#registration" class="btn btn-sm btn-danger">Registration</a>
+  <a href="#login" class="btn btn-sm btn-info">{{languageText.Login}}</a>
+  <a href="#registration" class="btn btn-sm btn-danger">{{languageText.Registration}}</a>
 </ng-template>
 <ng-template [ngIf]= "isUserLoggedIn()">
-  <button (click)="logout()" class="btn btn-sm btn-danger">Logout</button>
+  <button (click)="logout()" class="btn btn-sm btn-danger">{{languageText.Logout}}</button>
 </ng-template>
 </div>
 <!--Header-->
@@ -131,16 +131,16 @@
 <!--Login-->
 <div id="login" class="overlay">
   <div class="popup">
-    <h2>Login</h2>
+    <h2>{{languageText.Login}}</h2>
     <a class="close" href="#">&times;</a>
     <div class="content">
-      Please log in.
+      <br>
       <form #loginform = "ngForm" (submit)="makeLogin(loginform.value)">
-        <input type="text" name="email" placeholder="email" ngModel required>
+        <input type="text" name="email" placeholder="{{languageText.Email}}" ngModel required>
         <br>
-        <input type="password" name="password" placeholder="password" ngModel required>
-        <br>
-        <button class="btn btn-danger submit" type="submit">Submit</button>
+        <input type="password" name="password" placeholder="{{languageText.Password}}" ngModel required>
+        <hr>
+        <button class="btn btn-danger submit" type="submit">{{languageText.Submit}}</button>
       </form>
     </div>
   </div>
@@ -148,17 +148,16 @@
 <!--Registration-->
 <div id="registration" class="overlay">
   <div class="popup">
-    <h2>Registration</h2>
+    <h2>{{languageText.Registration}}</h2>
     <a class="close" href="#">&times;</a>
     <div class="content">
-      Please use your email for your registration. <br>
-      Also make sure your password is OK ....
+      <br>
       <form #registrationform = "ngForm" (submit)="makeRegistration(registrationform.value)">
-        <input class="text-input-dialog" type="text" name="email" placeholder="email" ngModel required>
+        <input class="text-input-dialog" type="text" name="email" placeholder="{{languageText.Email}}" ngModel required>
         <br>
-        <input type="password" name="password" placeholder="password" ngModel required>
-        <br>
-        <button class="btn btn-danger submit" type="submit">Submit</button>
+        <input type="password" name="password" placeholder="{{languageText.Password}}" ngModel required>
+        <hr>
+        <button class="btn btn-danger submit" type="submit">{{languageText.Submit}}</button>
       </form>
     </div>
   </div>

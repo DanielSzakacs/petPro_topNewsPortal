@@ -31,7 +31,7 @@ export class MainPageComponent implements OnInit {
   }
 
   getAllNews(){
-    this.getAllTopNewsBySource('cnn');
+    this.getAllTopNewsBySource('rt');
     this.http.get(this.mainPageNews).subscribe(
       res => {
         this.listOfNews = res;
@@ -117,6 +117,7 @@ export class MainPageComponent implements OnInit {
       }
     );
   }
+
   // registration
   public makeRegistration(data){
     this.http.get('/registration/' + data.email + '?userpassword=' + data.password).subscribe(
@@ -131,7 +132,6 @@ export class MainPageComponent implements OnInit {
       }
     );
   }
-
 
   public logout(){
     console.log('u try to log out');
