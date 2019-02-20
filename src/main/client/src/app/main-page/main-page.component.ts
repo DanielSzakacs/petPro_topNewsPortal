@@ -15,7 +15,7 @@ export class MainPageComponent implements OnInit {
   mainPageNews = environment.mainNewsURL;
   listOfNews : object;
   listOfTopNews : object;
-  languageText = environment.engText;
+  languageText = environment.rusText;
   user = false;
 
 
