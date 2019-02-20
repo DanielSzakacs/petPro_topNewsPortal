@@ -24,11 +24,11 @@ public class LoginHandler {
         return false;
     }
 
-    private boolean isEmailRegistered(String email, UserRepository userRepository){
+    public boolean isEmailRegistered(String email, UserRepository userRepository){
         return userRepository.existsByEmail(email);
     }
 
-    private boolean isPasswordCorrect(String email, String password, UserRepository userRepository){
+    public boolean isPasswordCorrect(String email, String password, UserRepository userRepository){
         User user = userRepository.findByEmail(email);
         String userHashedPassword = user.password;
         boolean result =  bCryptPasswordHandler.matchPasswords(password, userHashedPassword);
