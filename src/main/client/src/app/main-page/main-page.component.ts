@@ -105,9 +105,10 @@ export class MainPageComponent implements OnInit {
 
   // login
   public makeLogin(data){
-    this.http.get( 'http://localhost:8080//login/' + data.email + '?userpassword=' + data.password).subscribe(
+    this.http.get( '/login/' + data.email + '?userpassword=' + data.password).subscribe(
       res => {
-        this.login(data.email);
+        //this.login(data.email);
+        this.userService.login(data.email);
         this.isUserLoggedIn();
         console.log('You logged in successfully')
       },
@@ -118,9 +119,10 @@ export class MainPageComponent implements OnInit {
   }
   // registration
   public makeRegistration(data){
-    this.http.get('http://localhost:8080//registration/' + data.email + '?userpassword=' + data.password).subscribe(
+    this.http.get('/registration/' + data.email + '?userpassword=' + data.password).subscribe(
       res => {
-        this.login(data.email);
+        //this.login(data.email);
+        this.userService.login(data.email);
         console.log(res);
         this.isUserLoggedIn();
       },
@@ -130,9 +132,6 @@ export class MainPageComponent implements OnInit {
     );
   }
 
-  public login(data){
-    this.userService.login(data.email);
-  }
 
   public logout(){
     console.log('u try to log out');
