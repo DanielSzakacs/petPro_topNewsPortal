@@ -10,6 +10,8 @@ public class LoginHandler {
 
     public BCryptPasswordHandler bCryptPasswordHandler;
 
+    public LoginHandler(){};
+
     public LoginHandler(BCryptPasswordHandler bCryptPasswordHandler) {
         this.bCryptPasswordHandler = bCryptPasswordHandler;
     }
