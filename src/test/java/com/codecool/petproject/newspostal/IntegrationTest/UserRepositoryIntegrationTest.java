@@ -42,8 +42,4 @@ public class UserRepositoryIntegrationTest {
         userRepository.save(user);
         Assert.assertEquals("easyPassword", user.password);
     }
-
-
-
-
 }
