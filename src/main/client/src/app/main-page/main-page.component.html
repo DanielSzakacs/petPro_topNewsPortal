@@ -5,9 +5,6 @@
   <a class="navbar-brand" href="#" (click)="turnLanguageToRus()">
     <img src="{{flagService.getflagRUS()}}" alt="flag">
   </a>
-  <a class="navbar-brand" href="#" (click)="turnLanguageToEng()">
-    <img src="{{flagService.getflagUSA()}}" alt="flag">
-  </a>
 
 <ng-template [ngIf]= "!isUserLoggedIn()">
   <a href="#login" class="btn btn-sm btn-info">{{languageText.Login}}</a>
