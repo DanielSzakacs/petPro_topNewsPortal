@@ -8,4 +8,5 @@ public class UrlReader {
         String result = restTemplate.getForObject(url, String.class);
         return result;
     }
+
 }
