@@ -17,7 +17,7 @@ You also can find this project on docker hub.
 If you have docker on your machine you can pull it. 
 CLI.
 1) $ docker pull danielszakacs/news_portal:tagname
-2) $ docker run -p 8080:8080 news_portal:tagname
+2) $ docker run -p 8080:8080 danielszakacs/news_portal:tagname
 3) check http://localhost:8080
 
 #Outlook
