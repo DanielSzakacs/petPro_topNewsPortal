@@ -12,6 +12,14 @@ The page is available in two language English and Russian.
 - Bootstrap
 - Angular 7 
 
+#Docker hub             
+You also can find this project on docker hub.                   
+If you have docker on your machine you can pull it. 
+CLI.
+1) $ docker pull danielszakacs/news_portal:tagname
+2) $ docker run -p 8080:8080 news_portal:tagname
+3) check http://localhost:8080
+
 #Outlook
 To see the project on Heroku, please use this link:    
 https://newsportal-petproject-daniel.herokuapp.com/
