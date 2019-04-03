@@ -4,6 +4,8 @@ import {HttpClient} from "@angular/common/http";
 import {FlagService} from "../flagService/flag.service";
 import {CookieHandlerService} from "../cookiehandlerService/cookie-handler.service";
 import {UserService} from "../userService/user.service";
+import {AlertService} from "ngx-alerts";
+
 
 @Component({
   selector: 'app-main-page',
@@ -13,6 +15,7 @@ import {UserService} from "../userService/user.service";
 export class MainPageComponent implements OnInit {
 
   mainPageNews = environment.mainNewsURL;
+  urlForRegistrationAndLogin = environment.urlForRegistrationAndLogin;
   listOfNews : object;
   listOfTopNews : object;
   languageText = environment.rusText;
@@ -22,7 +25,8 @@ export class MainPageComponent implements OnInit {
   constructor(private http: HttpClient,
               public flagService: FlagService,
               private cookieService: CookieHandlerService,
-              private userService : UserService) { }
+              private userService : UserService,
+              private alertService: AlertService) { }
 
   ngOnInit() {
     this.isUserLoggedIn();
@@ -105,37 +109,40 @@ export class MainPageComponent implements OnInit {
 
   // login
   public makeLogin(data){
-    this.http.get( '/login/' + data.email + '?userpassword=' + data.password).subscribe(
+    this.http.get( this.urlForRegistrationAndLogin + '/login/' + data.email + '?userpassword=' + data.password).subscribe(
       res => {
         //this.login(data.email);
         this.userService.login(data.email);
         this.isUserLoggedIn();
-        console.log('You logged in successfully')
+        this.alertService.success('You logged in!')
       },
       error1 => {
-        console.log(error1)
+        console.log(error1);
+        this.alertService.warning('Something wrong with your email or password')
       }
     );
   }
 
   // registration
   public makeRegistration(data){
-    this.http.get('/registration/' + data.email + '?userpassword=' + data.password).subscribe(
+    this.http.get( this.urlForRegistrationAndLogin + '/registration/' + data.email + '?userpassword=' + data.password).subscribe(
       res => {
         //this.login(data.email);
         this.userService.login(data.email);
         console.log(res);
         this.isUserLoggedIn();
+        this.alertService.success('Registration is succeed')
       },
       error1 => {
-        console.log(error1)
+        console.log(error1);
+        this.alertService.warning('Something wrong, try it later.')
       }
     );
   }
 
   public logout(){
-    console.log('u try to log out');
     this.userService.logout();
+    this.alertService.info('Logout.')
   }
 
 }

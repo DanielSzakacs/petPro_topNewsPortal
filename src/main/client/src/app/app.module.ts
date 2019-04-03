@@ -7,6 +7,11 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule } from '@angular/forms';
 
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ReactiveFormsModule} from "@angular/forms";
+import { AlertModule } from 'ngx-alerts';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +20,10 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

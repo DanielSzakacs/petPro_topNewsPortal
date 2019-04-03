@@ -1,6 +1,9 @@
 export const environment = {
   production: true,
   mainNewsURL: '/topnews',
+  urlForRegistrationAndLogin : '',
+
+  // urlForRegistrationAndLogin : 'http://localhost:8080',
   // mainNewsURL: 'http://localhost:8080/topnews',
   rusText: {'World':'Мир', 'Business':'Бизнес',
     'Sport':'Спорт', 'Crypto':'Крипто',
